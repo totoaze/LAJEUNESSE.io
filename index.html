@@ -382,8 +382,101 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <script>
-document.querySelector('.dedans2').addEventListener('click', function() {
-  window.open('autre_page.html', '_blank');
+document.querySelector('.dedans2').addEventListener('click', function(e) {
+  e.preventDefault();
+  const img = this;
+  const rect = img.getBoundingClientRect();
+  const scrollY = window.scrollY || window.pageYOffset;
+  const scrollTo = rect.top + scrollY - (window.innerHeight / 2) + (rect.height / 2);
+  window.scrollTo({ top: scrollTo, behavior: 'smooth' });
+
+  setTimeout(() => {
+    // Crée deux moitiés de l'image
+    const leftHalf = document.createElement('div');
+    const rightHalf = document.createElement('div');
+    [leftHalf, rightHalf].forEach(half => {
+      half.style.position = 'fixed';
+      half.style.top = rect.top + 'px';
+      half.style.left = rect.left + 'px';
+      half.style.width = rect.width + 'px';
+      half.style.height = rect.height + 'px';
+      half.style.backgroundImage = `url('${img.src}')`;
+      half.style.backgroundSize = `${rect.width}px ${rect.height}px`;
+      half.style.backgroundRepeat = 'no-repeat';
+      half.style.zIndex = 10001;
+      half.style.pointerEvents = 'none';
+      half.style.borderRadius = getComputedStyle(img).borderRadius;
+    });
+    leftHalf.style.clipPath = `polygon(0 0, 50% 0, 50% 100%, 0 100%)`;
+    leftHalf.style.backgroundPosition = `0px 0px`;
+    rightHalf.style.clipPath = `polygon(50% 0, 100% 0, 100% 100%, 50% 100%)`;
+    rightHalf.style.backgroundPosition = `0px 0px`;
+
+    document.body.appendChild(leftHalf);
+    document.body.appendChild(rightHalf);
+
+    img.style.opacity = '0';
+
+    // Animation de déchirure
+    setTimeout(() => {
+      leftHalf.style.transition = 'transform 0.7s cubic-bezier(.4,2,.6,1), opacity 0.7s';
+      rightHalf.style.transition = 'transform 0.7s cubic-bezier(.4,2,.6,1), opacity 0.7s';
+      leftHalf.style.transform = 'translateX(-120px) rotate(-18deg) scale(1.1)';
+      rightHalf.style.transform = 'translateX(120px) rotate(18deg) scale(1.1)';
+      leftHalf.style.opacity = '0.7';
+      rightHalf.style.opacity = '0.7';
+
+      // Après la déchirure, explosion en particules
+      setTimeout(() => {
+        const particleCount = 38;
+        const particles = [];
+        for (let i = 0; i < particleCount; i++) {
+          const p = document.createElement('div');
+          p.className = 'img-particle';
+          p.style.position = 'fixed';
+          p.style.left = (rect.left + rect.width / 2) + 'px';
+          p.style.top = (rect.top + rect.height / 2) + 'px';
+          p.style.width = '8px';
+          p.style.height = '8px';
+          p.style.borderRadius = '50%';
+          p.style.background = 'linear-gradient(90deg,#00ffe7,#fff,#00ffe7)';
+          p.style.boxShadow = '0 0 12px 2px #00ffe7, 0 0 24px 4px #fff';
+          p.style.zIndex = '10000';
+          p.style.opacity = '0.85';
+          p.style.pointerEvents = 'none';
+          document.body.appendChild(p);
+          particles.push(p);
+
+          const angle = Math.random() * 2 * Math.PI;
+          const distance = 120 + Math.random() * 120;
+          const dx = Math.cos(angle) * distance;
+          const dy = Math.sin(angle) * distance;
+          const scale = 0.7 + Math.random() * 1.2;
+          const delay = Math.random() * 0.1;
+
+          setTimeout(() => {
+            p.style.transition = 'transform 0.9s cubic-bezier(.4,2,.6,1), opacity 0.9s';
+            p.style.transform = `translate(${dx}px,${dy}px) scale(${scale})`;
+            p.style.opacity = '0';
+          }, delay * 1000);
+        }
+
+        leftHalf.style.opacity = '0';
+        rightHalf.style.opacity = '0';
+
+        setTimeout(() => {
+          leftHalf.remove();
+          rightHalf.remove();
+          particles.forEach(p => p.remove());
+          window.open('autre_page.html', '_blank');
+          // Optionnel : reset l'image si on revient
+          setTimeout(() => {
+            img.style.opacity = '';
+          }, 600);
+        }, 1100);
+      }, 700);
+    }, 50);
+  }, 500); // temps pour le scroll
 });
 </script>
 </body>
