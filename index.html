@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> la toto famille </title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    
+    <div class="images">
+        <div class="text_sur_images">
+            <p class="logo_image">
+  <img class="logo" src="img/logo3.png">
+  <audio id="marseille-audio" src="img/JULJUL.mp4"></audio>
+</p>
+            <h1> Une expérience au coeur d’une </h1>
+            <p class="text">nature brute et préservée</p>
+
+            <p class="heberge">Hébergement insolite pour un séjour dans l’Hérault, en Occitanie</p>
+
+            <a class="film" target="_blank" href="https://youtu.be/rGFA10iNZ14">
+                <p> voir le film complet</p>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div>
+        <h2>Lodge suspendu </h2>
+        <p class="sur_le_toit_du_monde"> sur le toit du monde</p>
+        <div>
+            <p class="au">Au cœur d’une nature brute et préservée, monts sauvages, vignoble classé 
+             et villages pittoresques colorent la toile de fond de votre échappée 
+             bucolique à Cabrières. Tout au bout du petit sentier jalonné de chênes 
+             centenaires, déjà enivrés par les essences envoutantes de garrigue, vous 
+             distinguez Souki Lodges & Spa. </p>
+
+            <p class="au">Au pied du Pic de Vissou, dans un cadre remarquable pour son patrimoine
+            historique exceptionnel, sa géologie singulière et son paysage façonné par
+            les richesses naturelles de la région, les deux lodges sont une ode à la
+            nature authentique. Imaginés comme deux cocons végétaux, ces trésors
+            de l’architecture éco-pensée s’équilibrent entre matériaux nobles et
+            mobilier design et vivent en parfaite harmonie avec la flore endémique.</p>
+
+        </div>
+    </div>
+    <div>
+        <p class="dans">Dans votre cabane en bois, les frontières entre ciel et terre semblent</p>
+        <p class="dans">s’effacer pour dessiner un éden suspendu et hors du temps. Comme une</p>
+        <p class="dans">apologie de la bohème, s’y cultivent la tranquillité raffinée et l’élégance</p>
+        <p class="dans">décontractée d’une balade à vélo, d’un massage en pleine nature, et d’un</p>
+        <p class="dans">moment de plénitude dans votre piscine privée, oasis de bien-être</p>
+        <p class="dans">intégrant jets de massage, bulles et canons à eau pour une expérience de</p>
+        <p class="dans">relaxation absolue. Sous le ciel étoilé, entre les reflets de l’eau et les</p>
+        <p class="dans">silhouettes des montagnes, chaque instant devient une promesse de</p>
+        <p class="dans">bonheur et d’évasion. De la nage à contre-courant aux moments de</p>
+        <p class="dans">détente enveloppés par la nature, votre piscine devient le cœur vivant de</p>
+        <p class="dans">votre échappée, où le rêve et la réalité se mêlent en harmonie</p>
+
+    </div>
+
+    <a class="lodge" target="_blank" href="https://youtu.be/rGFA10iNZ14">
+        Réserver un lodge
+    </a>
+
+    <a class="contacter" target="_blank" href="https://youtu.be/rGFA10iNZ14">
+        Contactez-nous
+    </a>
+    <div>
+        <p class="img100">
+            <img class="cabane" src="img/cabane.PNG" />
+        </p>
+    </div>
+    <div class="carre">
+        <p class="decouvrez"> Découvrez nos lodges</p>
+        <p> <img class="dedans" src="img/dedans.PNG"> </p>
+        <p> <img class="dedans2" src="img/dedans2.PNG"> </p>
+    </div>
+    <div>
+        <div class="titreservices"> Services &<br />
+            Prestations
+        </div>
+        <div class="services"> 
+            
+            <h2 class="service">Services</h2>
+            <div class="liste">
+                <li>Terrasse abritée de 60m²</li>
+                <li>Terrasse abritée de 60m²</li>
+                <li>Cafetière à grains / sélection de thés en vrac</li>
+                <li>Cafetière à grains / sélection de thés en vrac</li>
+                <li>Cuisine équipée extérieure</li>
+                <li>Service de conciergerie</li>
+            </div>
+            <br><br>
+        </div>
+        <div> <p class="prestations2"> Prestations </p> </div>
+        
+
+        <a class="li2">
+            <li>Massages et soins</li>
+            <li>Soin aquatique Janzu</li>
+            <li>Room service petits-déjeuners</li>
+            <li>Dîners personnalisés</li>
+            <li>Vélos avec assistance éléctrique</li>
+        </a>
+            <div class="recherche">  <p target="_blank" href="https://youtu.be/rGFA10iNZ14">
+            Découvir
+                     </p> 
+            </div>
+        
+        </p>
+    </div>
+
+<script>
+const filmBtn = document.querySelector('.film');
+filmBtn.addEventListener('click', function(e) {
+  const wave = document.createElement('span');
+  wave.className = 'wave';
+  const rect = filmBtn.getBoundingClientRect();
+  wave.style.left = (e.clientX - rect.left) + 'px';
+  wave.style.top = (e.clientY - rect.top) + 'px';
+  wave.style.width = wave.style.height = Math.max(rect.width, rect.height) + 'px';
+  filmBtn.appendChild(wave);
+  wave.addEventListener('animationend', () => wave.remove());
+});
+</script>
+<script>
+document.querySelectorAll('.dans').forEach((el, i) => {
+  el.style.setProperty('--dans-delay', (i * 0.18) + 's');
+});
+</script>
+<script>
+function fadeCabaneOnScroll() {
+  const cabane = document.querySelector('.img100');
+  const carre = document.querySelector('.carre');
+  if (!cabane || !carre) return;
+
+  const carreRect = carre.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  // Quand .carre commence à entrer dans la fenêtre
+  if (carreRect.top < windowHeight && carreRect.bottom > 0) {
+    let percent = Math.min(1, Math.max(0, 1 - carreRect.top / windowHeight));
+    cabane.style.opacity = 1 - percent;
+  } else if (carreRect.top >= windowHeight) {
+    cabane.style.opacity = 1;
+  } else if (carreRect.bottom <= 0) {
+    cabane.style.opacity = 0;
+  }
+}
+window.addEventListener('scroll', fadeCabaneOnScroll);
+window.addEventListener('resize', fadeCabaneOnScroll);
+document.addEventListener('DOMContentLoaded', fadeCabaneOnScroll);
+</script>
+<script>
+function addLaserEffect(img) {
+  // Supprime les anciens effets
+  let old = img.parentNode.querySelector('.laser-effect');
+  if (old) old.remove();
+
+  // Crée le conteneur d'effet
+  let effect = document.createElement('div');
+  effect.className = 'laser-effect';
+  effect.style.width = img.offsetWidth + 'px';
+  effect.style.height = img.offsetHeight + 'px';
+  effect.style.top = img.offsetTop + 'px';
+  effect.style.left = img.offsetLeft + 'px';
+
+  // Ajoute plusieurs lignes laser à des positions aléatoires
+  for (let i = 0; i < 4; i++) {
+    let line = document.createElement('div');
+    line.className = 'laser-line';
+    line.style.top = Math.random() * (img.offsetHeight - 6) + 'px';
+    line.style.animationDelay = (i * 0.12) + 's';
+    effect.appendChild(line);
+  }
+  img.parentNode.style.position = 'relative';
+  img.parentNode.appendChild(effect);
+
+  // Supprime l'effet après l'animation
+  setTimeout(() => {
+    if (effect) effect.remove();
+  }, 1200);
+}
+
+document.querySelectorAll('.dedans, .dedans2').forEach(img => {
+  img.addEventListener('mouseenter', function() {
+    addLaserEffect(img);
+  });
+});
+</script>
+<script>
+function addLaserEffect(img) {
+  // Supprime les anciens effets
+  let old = img.parentNode.querySelector('.laser-effect');
+  if (old) old.remove();
+
+  // Crée le conteneur d'effet
+  let effect = document.createElement('div');
+  effect.className = 'laser-effect';
+  effect.style.width = img.offsetWidth + 'px';
+  effect.style.height = img.offsetHeight + 'px';
+  effect.style.top = img.offsetTop + 'px';
+  effect.style.left = img.offsetLeft + 'px';
+
+  // Ajoute plusieurs lignes laser à des positions aléatoires
+  for (let i = 0; i < 4; i++) {
+    let line = document.createElement('div');
+    line.className = 'laser-line';
+    line.style.top = Math.random() * (img.offsetHeight - 6) + 'px';
+    line.style.animationDelay = (i * 0.12) + 's';
+    effect.appendChild(line);
+  }
+
+  // Ajoute des morceaux lumineux qui partent dans tous les sens
+  for (let i = 0; i < 7; i++) {
+    let piece = document.createElement('div');
+    piece.className = 'laser-piece';
+    // Position de départ aléatoire sur l'image
+    piece.style.left = (Math.random() * (img.offsetWidth - 18)) + 'px';
+    piece.style.top = (Math.random() * (img.offsetHeight - 18)) + 'px';
+    // Mouvement aléatoire
+    let angle = Math.random() * 2 * Math.PI;
+    let distance = 60 + Math.random() * 80;
+    let dx = Math.cos(angle) * distance;
+    let dy = Math.sin(angle) * distance;
+    let rot = (Math.random() - 0.5) * 180;
+    piece.style.setProperty('--dx', dx + 'px');
+    piece.style.setProperty('--dy', dy + 'px');
+    piece.style.setProperty('--rot', rot + 'deg');
+    piece.style.animationDelay = (Math.random() * 0.3) + 's';
+    effect.appendChild(piece);
+  }
+
+  img.parentNode.style.position = 'relative';
+  img.parentNode.appendChild(effect);
+
+  // Supprime l'effet après l'animation
+  setTimeout(() => {
+    if (effect) effect.remove();
+  }, 1300);
+}
+
+document.querySelectorAll('.dedans, .dedans2').forEach(img => {
+  img.addEventListener('mouseenter', function() {
+    addLaserEffect(img);
+  });
+});
+</script>
+<script>
+function addLaserEffectBtn(btn) {
+  // Supprime les anciens effets
+  let old = btn.querySelector('.laser-effect-btn');
+  if (old) old.remove();
+
+  // Crée le conteneur d'effet
+  let effect = document.createElement('div');
+  effect.className = 'laser-effect-btn';
+  effect.style.width = btn.offsetWidth + 'px';
+  effect.style.height = btn.offsetHeight + 'px';
+
+  // Ajoute plusieurs lignes laser à des positions aléatoires
+  for (let i = 0; i < 3; i++) {
+    let line = document.createElement('div');
+    line.className = 'laser-line-btn';
+    line.style.top = Math.random() * (btn.offsetHeight - 6) + 'px';
+    line.style.animationDelay = (i * 0.10) + 's';
+    effect.appendChild(line);
+  }
+
+  // Ajoute des morceaux lumineux qui partent dans tous les sens
+  for (let i = 0; i < 5; i++) {
+    let piece = document.createElement('div');
+    piece.className = 'laser-piece-btn';
+    piece.style.left = (Math.random() * (btn.offsetWidth - 14)) + 'px';
+    piece.style.top = (Math.random() * (btn.offsetHeight - 14)) + 'px';
+    let angle = Math.random() * 2 * Math.PI;
+    let distance = 30 + Math.random() * 40;
+    let dx = Math.cos(angle) * distance;
+    let dy = Math.sin(angle) * distance;
+    let rot = (Math.random() - 0.5) * 180;
+    piece.style.setProperty('--dx', dx + 'px');
+    piece.style.setProperty('--dy', dy + 'px');
+    piece.style.setProperty('--rot', rot + 'deg');
+    piece.style.animationDelay = (Math.random() * 0.2) + 's';
+    effect.appendChild(piece);
+  }
+
+  btn.style.position = 'relative';
+  btn.appendChild(effect);
+
+  setTimeout(() => {
+    if (effect) effect.remove();
+  }, 1100);
+}
+
+document.querySelectorAll('.lodge, .contacter').forEach(btn => {
+  btn.addEventListener('mouseenter', function() {
+    addLaserEffectBtn(btn);
+  });
+});
+</script>
+<script>
+function launchLogoLaser() {
+  const fx = document.querySelector('.logo-fx');
+  if (!fx) return;
+  fx.innerHTML = ''; // Nettoie les anciens lasers
+
+  // Crée 2 lasers à des positions différentes
+  for (let i = 0; i < 2; i++) {
+    let laser = document.createElement('div');
+    laser.className = 'logo-laser';
+    laser.style.top = (20 + i * 30) + '%';
+    laser.style.animationDelay = (i * 0.18) + 's';
+    fx.appendChild(laser);
+  }
+  // Nettoie après l'anim
+  setTimeout(() => { if (fx) fx.innerHTML = ''; }, 1300);
+}
+
+// Animation à l'arrivée sur le site
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(launchLogoLaser, 700);
+});
+
+// Animation au survol
+document.querySelector('.logo').addEventListener('mouseenter', launchLogoLaser);
+</script>
+<script>
+// Création du rond futuriste avec JUL
+const cursor = document.createElement('div');
+cursor.className = 'cursor-futuriste';
+// Ajoute le logo d'or et platine à la place du texte
+const logoImg = document.createElement('img');
+logoImg.src = 'img/JUL.PNG'; // Chemin corrigé
+logoImg.alt = 'Logo Or et Platine JUL';
+logoImg.style.width = '60%';
+logoImg.style.height = '60%';
+logoImg.style.objectFit = 'contain';
+logoImg.style.pointerEvents = 'none';
+cursor.appendChild(logoImg);
+document.body.appendChild(cursor);
+
+// Déplacement du rond avec la souris
+document.addEventListener('mousemove', e => {
+  cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+});
+
+// Animation "active" au clic
+document.addEventListener('mousedown', () => {
+  cursor.classList.add('active');
+});
+document.addEventListener('mouseup', () => {
+  cursor.classList.remove('active');
+});
+
+// Optionnel : cacher le curseur natif pour un effet 100% custom
+document.body.style.cursor = 'none';
+</script>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  const logo = document.querySelector('.logo');
+  const audio = document.getElementById('marseille-audio');
+
+  if (logo && audio) {
+    logo.addEventListener('mouseenter', () => {
+      audio.currentTime = 0;
+      audio.play();
+    });
+    logo.addEventListener('mouseleave', () => {
+      audio.pause();
+      audio.currentTime = 0;
+    });
+  }
+});
+</script>
+<script>
+document.querySelector('.dedans2').addEventListener('click', function() {
+  window.open('autre_page.html', '_blank');
+});
+</script>
+</body>
+
+</html>
